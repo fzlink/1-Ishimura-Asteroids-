@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform PlayerCenter;
     [SerializeField] private float Speed;
     [SerializeField] private float RotationSpeed;
+    [SerializeField] private Animator Animator;
     
     private bool _boost;
     private Vector2 _directionVector;
@@ -17,7 +15,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _boost = Input.GetKey(KeyCode.Space);
+        _boost = Input.GetKey(KeyCode.UpArrow);
+        Animator.SetBool("Boost", _boost);
+
         int direction = 0;
         if (Input.GetKey(KeyCode.RightArrow))
             direction = -1;
@@ -33,7 +33,5 @@ public class PlayerController : MonoBehaviour
             Vector2 forwardDir = PlayerForward.position - PlayerCenter.position;
             RB.AddForce(forwardDir * Speed, ForceMode2D.Force);
         }
-        
-        
     }
 }
