@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -6,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform PlayerForward;
     [SerializeField] private Transform PlayerCenter;
     [SerializeField] private float Speed;
+    [SerializeField] private float MaxVelocity;
     [SerializeField] private float RotationSpeed;
     [SerializeField] private Animator Animator;
     
@@ -17,7 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         _boost = Input.GetKey(KeyCode.UpArrow);
         Animator.SetBool("Boost", _boost);
-
+        
         int direction = 0;
         if (Input.GetKey(KeyCode.RightArrow))
             direction = -1;
@@ -32,6 +34,17 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 forwardDir = PlayerForward.position - PlayerCenter.position;
             RB.AddForce(forwardDir * Speed, ForceMode2D.Force);
+        }
+
+        ClampVelocity();
+    }
+
+    private void ClampVelocity()
+    {
+        float sqrMagnitude = RB.velocity.sqrMagnitude;
+        if (sqrMagnitude > MaxVelocity * MaxVelocity)
+        {
+            RB.velocity = RB.velocity.normalized * MaxVelocity;
         }
     }
 }

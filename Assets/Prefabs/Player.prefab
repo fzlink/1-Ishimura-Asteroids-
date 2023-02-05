@@ -104,7 +104,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2173601071148930664}
   - component: {fileID: 8483391763408899506}
+  - component: {fileID: 1646863287658223471}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -206,6 +207,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1646863287658223471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3274332784734403154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee033c5707b3194698decedf15f3eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4267389875987907905
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +245,7 @@ Transform:
   m_GameObject: {fileID: 4267389875987907905}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.39313415, y: 0.59341, z: 0.59341}
+  m_LocalScale: {x: 0.19011158, y: 0.28696087, z: 0.28696087}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2173601071148930664}
@@ -358,6 +371,8 @@ GameObject:
   - component: {fileID: 5236416634175688539}
   - component: {fileID: 1546093745}
   - component: {fileID: 1546093747}
+  - component: {fileID: 799726173641510606}
+  - component: {fileID: 2144320067}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -396,7 +411,8 @@ MonoBehaviour:
   RB: {fileID: 1546093747}
   PlayerForward: {fileID: 1512673119}
   PlayerCenter: {fileID: 256209932}
-  Speed: 4
+  Speed: 10
+  MaxVelocity: 10
   RotationSpeed: 0.5
   Animator: {fileID: 8760898432588066019}
 --- !u!50 &1546093747
@@ -420,3 +436,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &799726173641510606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8306993761943554012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ca13994d689a74eb422363da043114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InvisibilityDetector: {fileID: 1646863287658223471}
+--- !u!114 &2144320067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8306993761943554012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a172f3da9ed8814a83e67d91ab15c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletLife: 1.5
+  BulletPoint: {fileID: 1512673119}
+  BulletCooldown: 0.25
+  ShootSpeed: 25
