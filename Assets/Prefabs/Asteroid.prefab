@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RB: {fileID: 3286150879003876385}
-  CollisionHandler: {fileID: 4888627624853353787}
+  CollisionHandler: {fileID: 4221326825562922374}
   Roots:
   - {fileID: 3586632797001182609}
   - {fileID: 8343614653989255055}
@@ -157,6 +157,7 @@ MonoBehaviour:
   - {x: 1, y: 1}
   - {x: 2, y: 2}
   ShatteredSpeed: 2.5
+  ScreenTraveler: {fileID: 1179965772437883797}
 --- !u!114 &1179965772437883797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6939560981614936059}
   - component: {fileID: 4613366999739574423}
-  - component: {fileID: 7462185372847101794}
+  - component: {fileID: 2771459599532494151}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -456,7 +457,7 @@ PolygonCollider2D:
       - {x: 0.39542413, y: -0.102449775}
       - {x: 0.33617544, y: 0.12648667}
       - {x: 0.14364651, y: 0.27752137}
---- !u!114 &7462185372847101794
+--- !u!114 &2771459599532494151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -465,7 +466,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4071198760085926996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e87224a934b4441eabe73b1df85d3d3b, type: 3}
+  m_Script: {fileID: 11500000, guid: d825cdbcb3e147741a2858bce298b766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4792598801117371542
@@ -478,7 +479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5606300859270276097}
   - component: {fileID: 4884697701458669230}
-  - component: {fileID: 4888627624853353787}
+  - component: {fileID: 4221326825562922374}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -536,7 +537,7 @@ PolygonCollider2D:
       - {x: 0.3321479, y: -0.19500983}
       - {x: 0.2945996, y: -0.030160487}
       - {x: 0.3319791, y: 0.11582162}
---- !u!114 &4888627624853353787
+--- !u!114 &4221326825562922374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -545,7 +546,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4792598801117371542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e87224a934b4441eabe73b1df85d3d3b, type: 3}
+  m_Script: {fileID: 11500000, guid: d825cdbcb3e147741a2858bce298b766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5683332747982790697
@@ -558,7 +559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7716270629675263348}
   - component: {fileID: 6372202422104480707}
-  - component: {fileID: 3987792451256107560}
+  - component: {fileID: 2984341320322761259}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -615,7 +616,7 @@ PolygonCollider2D:
       - {x: 0.060979903, y: -0.32123408}
       - {x: 0.23182206, y: -0.22039548}
       - {x: 0.28251803, y: 0.15006393}
---- !u!114 &3987792451256107560
+--- !u!114 &2984341320322761259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -624,7 +625,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5683332747982790697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e87224a934b4441eabe73b1df85d3d3b, type: 3}
+  m_Script: {fileID: 11500000, guid: d825cdbcb3e147741a2858bce298b766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8555572937931057446

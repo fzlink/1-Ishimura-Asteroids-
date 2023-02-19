@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Asteroid : PoolableObject
@@ -9,6 +10,7 @@ public class Asteroid : PoolableObject
     [SerializeField] private List<Transform> Roots;
     [SerializeField] private List<Vector2> DurabilityScales;
     [SerializeField] private float ShatteredSpeed;
+    [SerializeField] private ScreenTraveler ScreenTraveler;
 
     private int _durability;
     
@@ -23,19 +25,31 @@ public class Asteroid : PoolableObject
             Shatter(eventArgs.collisionPoint);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.TryGetComponent(out CollisionHandler collisionHandler))
+        {
+            collisionHandler.Collide(typeof(Asteroid), transform.position);
+        }
+    }
+
     private void Shatter(Vector2 collisionPoint)
     {
         _durability--;
         AsteroidPool.Instance.ReturnToPool(this);
-        Vector2 centerPos = transform.position;
-        var direction = Vector2.Perpendicular(centerPos - collisionPoint);
-        for (int i = 0; i < 2; i++)
+        if (_durability > 0)
         {
-            var asteroid = (Asteroid) AsteroidPool.Instance.GetObject();
-            asteroid.SetAsteroidModel(_durability);
-            transform.position = collisionPoint;
-            asteroid.Release(direction);
-            direction = -direction;
+            Vector2 centerPos = transform.position;
+            var direction = Vector2.Perpendicular(centerPos - collisionPoint);
+            for (int i = 0; i < 2; i++)
+            {
+                var asteroid = (Asteroid) AsteroidPool.Instance.GetObject();
+                asteroid.gameObject.SetActive(true);
+                asteroid.SetAsteroidModel(_durability);
+                asteroid.transform.position = collisionPoint;
+                asteroid.Release(direction);
+                direction = -direction;
+            }
         }
     }
 
@@ -46,6 +60,10 @@ public class Asteroid : PoolableObject
         int index = durability - 1;
         Roots[index].localScale = DurabilityScales[index];
         Roots[index].gameObject.SetActive(true);
+        CollisionHandler.OnCollided -= OnCollided;
+        CollisionHandler = Roots[index].GetComponentInChildren<CollisionHandler>();
+        CollisionHandler.OnCollided += OnCollided;
+        ScreenTraveler.SetInvisibilityDetector();
     }
 
     private void ResetRoots()

@@ -14,6 +14,13 @@ public class ScreenTraveler : MonoBehaviour
         InvisibilityDetector.Detector_OnInvisible += Travel;
     }
 
+    public void SetInvisibilityDetector()
+    {
+        InvisibilityDetector.Detector_OnInvisible -= Travel;
+        InvisibilityDetector = GetComponentInChildren<InvisibilityDetector>(false);
+        InvisibilityDetector.Detector_OnInvisible += Travel;
+    }
+
     private void Travel()
     {
         var disappearPos = transform.position;

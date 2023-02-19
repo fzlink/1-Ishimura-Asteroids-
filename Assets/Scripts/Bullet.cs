@@ -16,7 +16,7 @@ public class Bullet : PoolableObject
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out CollisionHandler asteroidCollisionHandler))
+        if (other.TryGetComponent(out AsteroidCollisionHandler asteroidCollisionHandler))
         {
             asteroidCollisionHandler.Collide(typeof(Bullet), transform.position);
             BulletPool.Instance.ReturnToPool(this);
