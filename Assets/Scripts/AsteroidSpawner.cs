@@ -12,6 +12,7 @@ public class AsteroidSpawner : MonoBehaviour
     private Vector2 _maxBound;
 
     private List<Asteroid> Asteroids;
+    private int asteroidPart;
 
     private void Awake()
     {
@@ -29,7 +30,7 @@ public class AsteroidSpawner : MonoBehaviour
     {
         while (true)
         {
-            if (Asteroids.Count < AsteroidCap)
+            if (asteroidPart + 4 < AsteroidCap)
             {
                 var asteroid = (Asteroid) AsteroidPool.Instance.GetObject();
                 asteroid.gameObject.SetActive(true);
@@ -39,6 +40,11 @@ public class AsteroidSpawner : MonoBehaviour
                 asteroid.transform.position = spawnPoint;
                 var direction = (Vector2)Player.transform.position - spawnPoint;
                 asteroid.Release(direction.normalized);
+                asteroidPart += 4;
+                asteroid.OnDestroyCompletely += () =>
+                {
+                    asteroidPart--;
+                };
             }
             yield return new WaitForSeconds(3f);
         }

@@ -799,6 +799,7 @@ MonoBehaviour:
   CollisionHandler: {fileID: 8834656754213504416}
   ShipPartController: {fileID: 1129204530842715531}
   BlinkController: {fileID: 7218396580054024271}
+  Shooter: {fileID: 2144320067}
   _healthPoint: 3
 --- !u!50 &1546093747
 Rigidbody2D:

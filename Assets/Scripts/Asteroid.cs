@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Asteroid : PoolableObject
@@ -12,6 +11,8 @@ public class Asteroid : PoolableObject
     [SerializeField] private float ShatteredSpeed;
     [SerializeField] private ScreenTraveler ScreenTraveler;
 
+    public event Action OnDestroyCompletely;
+    
     private int _durability;
     
     private void Awake()
@@ -50,6 +51,10 @@ public class Asteroid : PoolableObject
                 asteroid.Release(direction);
                 direction = -direction;
             }
+        }
+        else
+        {
+            OnDestroyCompletely?.Invoke();
         }
     }
 

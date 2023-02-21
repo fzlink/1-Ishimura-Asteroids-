@@ -15,8 +15,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CollisionHandler CollisionHandler;
     [SerializeField] private ShipPartController ShipPartController;
     [SerializeField] private BlinkController BlinkController;
+    [SerializeField] private Shooter Shooter;
     
     [SerializeField] private int _healthPoint = 3;
+
+    public event Action<int> OnDestroyed;
+    public event Action OnRespawned;
     
     private bool _boost;
     private Vector2 _directionVector;
@@ -38,6 +42,7 @@ public class PlayerController : MonoBehaviour
     private void LoseHealth()
     {
         _healthPoint--;
+        OnDestroyed?.Invoke(_healthPoint);
         Shatter();
     }
 
@@ -46,6 +51,7 @@ public class PlayerController : MonoBehaviour
         Root.gameObject.SetActive(false);
         ShipPartController.gameObject.SetActive(true);
         ShipPartController.Distribute();
+        Shooter.enabled = false;
         StartCoroutine(Respawn());
     }
 
@@ -57,11 +63,12 @@ public class PlayerController : MonoBehaviour
         gameObject.transform.position = Vector3.zero;
         Root.gameObject.SetActive(true);
         ShipPartController.Respawn();
-        
+        Shooter.enabled = true;
         CollisionHandler.gameObject.SetActive(false);
         Action OnBlinkEnd = () =>
         {
             CollisionHandler.gameObject.SetActive(true);
+            OnRespawned?.Invoke();
         };
         BlinkController.Blink(2f,OnBlinkEnd);
     }

@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c346262bdf6a14341ad9b4f64da528d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AsteroidCap: 8
+  AsteroidCap: 32
   Player: {fileID: 2144320064}
 --- !u!1001 &1546093743
 PrefabInstance:
