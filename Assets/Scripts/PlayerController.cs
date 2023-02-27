@@ -31,6 +31,11 @@ public class PlayerController : MonoBehaviour
         CollisionHandler.OnCollided += OnCollided;
     }
 
+    public int GetHealthPoint()
+    {
+        return _healthPoint;
+    }
+    
     private void OnCollided(object sender, CollisionEventArgs eventArgs)
     {
         if (eventArgs.type == typeof(Asteroid))
@@ -52,7 +57,10 @@ public class PlayerController : MonoBehaviour
         ShipPartController.gameObject.SetActive(true);
         ShipPartController.Distribute();
         Shooter.enabled = false;
-        StartCoroutine(Respawn());
+        if (_healthPoint > 0)
+        {
+            StartCoroutine(Respawn());
+        }
     }
 
     private IEnumerator Respawn()

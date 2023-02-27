@@ -36,6 +36,7 @@ public class Asteroid : PoolableObject
 
     private void Shatter(Vector2 collisionPoint)
     {
+        ScoreManager.Instance.AddScore(_durability);
         _durability--;
         AsteroidPool.Instance.ReturnToPool(this);
         if (_durability > 0)
