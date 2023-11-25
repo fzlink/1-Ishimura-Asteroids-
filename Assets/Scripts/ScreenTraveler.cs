@@ -20,6 +20,9 @@ public class ScreenTraveler : MonoBehaviour
 
     private void Travel()
     {
+        if (_mainCamera == null)
+            return;
+        
         var disappearPos = transform.position;
         var min = _mainCamera.ScreenToWorldPoint(Vector2.zero);
         var max = _mainCamera.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
